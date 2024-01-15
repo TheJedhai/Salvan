@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:rpgdemo/app/UI/pageSelector.dart';
+import '../Models/list.dart';
 import '../Models/models.dart';
-import 'dialogScreenRoute001.dart';
 
 class RollingText extends StatefulWidget {
-  final TextPage? textPage;
+  final TextPage textPage;
   const RollingText({super.key, required this.textPage});
 
   @override
@@ -18,7 +19,7 @@ class _MyHomePageState extends State<RollingText> {
   @override
   void initState() {
     super.initState();
-    fullText = widget.textPage!.textToShow;
+    fullText = widget.textPage.textToShow;
     _animateText();
   }
 
@@ -87,12 +88,15 @@ class _MyHomePageState extends State<RollingText> {
                             alignment: Alignment.bottomRight,
                             child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const DialogScreenRoute001(),
-                                      ));
+                                  if (routes[widget.textPage.routeToGo] !=
+                                      null) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => PageSelector(
+                                              route: widget.textPage.routeToGo),
+                                        ));
+                                  }
                                 },
                                 child: Container(
                                     color:

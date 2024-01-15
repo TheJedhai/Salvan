@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rpgdemo/app/UI/rollingText.dart';
-
-import '../Models/list.dart';
+import 'pageSelector.dart';
 
 class InitialScreen extends StatelessWidget {
   const InitialScreen({super.key});
@@ -56,8 +54,8 @@ class InitialScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => RollingText(
-                          textPage: routes[1],
+                    builder: (context) => const PageSelector(
+                          route: 1,
                         )),
               );
             },
